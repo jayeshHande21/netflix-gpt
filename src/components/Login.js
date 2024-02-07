@@ -10,6 +10,7 @@ import { auth } from "../utilis/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utilis/userSlice";
+import { UserAvtar } from "../utilis/constants";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -40,12 +41,12 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://i.postimg.cc/0NPbfN78/Jayesh.jpg",
+            photoURL: UserAvtar,
           })
             .then(() => {
               if (user) {
                 const { vid, email, displayName, photoURL } = auth.currentUser;
-                console.log(displayName);
+
                 dispatch(
                   addUser({
                     vid: vid,
@@ -65,8 +66,8 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode, errorMessage);
-          // ..
+
+          setErrorMessage(errorMessage);
         });
     } else {
       signInWithEmailAndPassword(
@@ -75,15 +76,15 @@ const Login = () => {
         password.current.value
       )
         .then((userCredential) => {
-          // Signed in
           const user = userCredential.user;
-          console.log(user);
+
           navigate("/Browse");
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode, errorMessage);
+
+          setErrorMessage(errorMessage);
         });
     }
   };
