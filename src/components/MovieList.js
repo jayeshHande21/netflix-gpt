@@ -5,12 +5,12 @@ const MovieList = ({ title, movies }) => {
   const containerStyles = {
     display: "flex",
     overflowX: "auto",
-    scrollbarWidth: "thin", // For Firefox
+    scrollbarWidth: "thin",
   };
 
   return (
-    <div className="py-6">
-      <h1 className="text-3xl py-6 text-white pl-9">{title}</h1>
+    <div className=" py-6">
+      <h1 className=" text-xl md:text-3xl py-6 text-white pl-9">{title}</h1>
       <div style={containerStyles}>
         <div className="flex">
           {movies?.map((movie) => (

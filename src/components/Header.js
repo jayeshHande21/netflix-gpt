@@ -53,8 +53,8 @@ const Header = () => {
     dispatch(changeLanguage(e.target.value));
   };
   return (
-    <div className="flex justify-between items-center absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10">
-      <img className="w-44" src={LOGO} alt="Logo" />
+    <div className="flex flex-col md:flex-row  md:justify-between items-center absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10">
+      <img className="w-44 mb-4 mx-auto md:mx-0" src={LOGO} alt="Logo" />
       {user && (
         <div className="flex ">
           {gptDisplayBtn && (
@@ -71,7 +71,7 @@ const Header = () => {
           )}
           <button
             onClick={hanldeGptClick}
-            className="b text-white  text-xl mr-5 bg-blue-600 p-2 rounded-full hover:bg-blue-800"
+            className=" text-white  text-xl mr-20 md:mr-5 bg-blue-600 p-2 block md:rounded-full hover:bg-blue-800"
           >
             {gptDisplayBtn ? "HomePage" : "GPT Search"}
           </button>
